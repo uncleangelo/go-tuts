@@ -1,2 +1,3 @@
 # go-tuts
-Golang basics
+Golang basics notes
+
