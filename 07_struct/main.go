@@ -8,29 +8,40 @@ import "fmt"
 //language such as C#
 
 //a struct can be defined outside of the func main()
-
-type Tea struct {
-	name     string
-	calories float64
+type employee struct {
+	firstName string
+	age       int
 }
 
 func main() {
 	//initialize struct with field names
-	greenTea := Tea{
-		calories: 2.45,
-		name:     "Green Tea",
+	abu := employee{
+		age:       45,
+		firstName: "Abu",
 	}
-	fmt.Println(greenTea)
+	fmt.Println(abu.firstName, "is", abu.age, "years old")
 
 	//initialize struct wihtout declaring field names
 	//need to follow the order of the field names in the struct type
-	blackTea := Tea{"Black Tea", 1}
-	fmt.Println(blackTea)
+	ahmad := employee{"Ahmad", 30}
+	fmt.Println(ahmad.firstName, "is", ahmad.age, "years old")
 
 	//can also initialize struct without using all the field names
 	//it will output the undeclared field names as zero value
-	oolong := Tea{
-		name: "Oolong Tea",
+	along := employee{
+		firstName: "Along",
 	}
-	fmt.Println(oolong)
+	fmt.Println(along.firstName, "is a new employee here. Age is", along.age, "(zero value)")
+	//the other field can be added later
+	along.age = 25
+	fmt.Println(along.firstName, "is", along.age, "years old")
+
+	//method in struct
+	alongToRetire := along.yearsUntilRetirement()
+	fmt.Println(alongToRetire)
+}
+
+//adding a method into a struct
+func (e employee) yearsUntilRetirement() int {
+	return 60 - e.age
 }
